@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="net.bible.android.activity"
       android:installLocation="auto"
-      android:versionName="2.9.1_05mm" android:versionCode="235">
+      android:versionName="2.9.1_06mm" android:versionCode="236">
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="19"/>
     
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -21,6 +21,15 @@
 	/>
 	
 	<application android:icon="@drawable/ichthys" android:label="@string/app_name" android:name="net.bible.android.BibleApplication" android:theme="@style/AppThemeDay" android:allowBackup="true" android:resizeableActivity="true">
+         <activity
+            android:name="net.bible.android.view.activity.SplashActivity"
+            android:theme="@style/SplashTheme"> <!-- 自定义 splash 主题 - Customize the Splash theme-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- deprecated but necessary to prevent old shortcut breaking -->
         <activity android:name=".StartupActivity"
                   android:label="@string/app_name"
