@@ -187,6 +187,11 @@ public class MainBibleActivity extends CustomTitlebarActivityBase implements Ver
 			// need to layout multiple windows differently
 			windowControl.orientationChange();
 		}
+
+		// 重新创建activity，以使旋转屏幕至横屏时，搜索menuItem立即显示；不用等到切换app或activity后才显示。
+		// Recreate the activity so that when you rotate the screen to landscape screen, the search menuItem is displayed immediately;
+		// You don't have to wait until you switch apps or activities to show up.
+		recreate();
 	}
 
 	@Override
