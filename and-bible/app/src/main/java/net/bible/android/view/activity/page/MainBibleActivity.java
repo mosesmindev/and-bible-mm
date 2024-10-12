@@ -128,6 +128,11 @@ public class MainBibleActivity extends CustomTitlebarActivityBase implements Ver
 			mWholeAppWasInBackground = false;
 			refreshIfNightModeChange();
 		}
+
+		// 设置夜间模式后，再次进入acticity，重新创建activity，使menu菜单(main.xml) 的夜间模式也能立即生效，不用等到关闭app后再打开app才生效
+		// After setting the night mode, enter Activity again and recreate the activity so that the night mode in the menu (main.xml) can also take effect immediately,
+		// instead of waiting to close the app and then open the app to take effect
+		recreate();
 	}
 
 	/**
