@@ -71,7 +71,8 @@ public class SettingsActivity extends PreferenceActivity {
 		        	localePref.setEntryValues( ArrayUtils.remove(entryValues, mlIndex));
 		        }
 		    }
-			
+
+			addNightModeThemeSettings();
 			addScreenTimeoutSettings();
 
 			// if locale is overridden then have to force title to be translated here
@@ -91,6 +92,18 @@ public class SettingsActivity extends PreferenceActivity {
 		super.attachBaseContext(LocaleHelper.onAttach(newBase));
 	}
 
+	private void addNightModeThemeSettings(){
+		ListPreference nightModePref = (ListPreference)getPreferenceScreen().findPreference(ScreenSettings.NIGHT_MODE_PREF_WITH_SENSOR);
+		if (nightModePref != null){
+			nightModePref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+				@Override
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					updateTheme();
+					return true; // 返回true以保存新值--Returns true to save the new value
+				}
+			});
+		}
+	}
 	private void addScreenTimeoutSettings() {
         ListPreference timeoutPref = (ListPreference)getPreferenceScreen().findPreference(ScreenTimeoutSettings.SCREEN_TIMEOUT_PREF);
         
@@ -115,7 +128,19 @@ public class SettingsActivity extends PreferenceActivity {
         timeoutPref.setEntries(screenTimeoutSettings.getPreferenceEntries());
         timeoutPref.setEntryValues(screenTimeoutSettings.getPreferenceEntryValues());
 	}
-	
+
+	private void updateTheme() {
+		ScreenSettings.isNightModeChanged();
+		// 根据选择的主题应用新的主题--Apply a new theme based on the selected theme
+		if (ScreenSettings.isNightMode()) {
+			setTheme(R.style.AppThemeNight);
+		} else {
+			setTheme(R.style.AppThemeDay);
+		}
+		// 重新创建 Activity 以应用新的主题--Recreate the activity to apply the new theme
+		recreate();
+	}
+
 	@Override
 	protected void onStop() {
 		super.onStop();
