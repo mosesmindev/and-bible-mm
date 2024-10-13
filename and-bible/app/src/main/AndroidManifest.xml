@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="net.bible.android.activity"
       android:installLocation="auto"
-      android:versionName="2.9.1_06mm" android:versionCode="236">
+      android:versionName="2.9.1_07mm" android:versionCode="237">
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="19"/>
     
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -34,12 +34,12 @@
         <activity android:name=".StartupActivity"
                   android:label="@string/app_name"
                   android:configChanges="keyboardHidden|orientation|screenSize|locale">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!-- see Samsung multi-window info at bottom -->
-                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--                &lt;!&ndash; see Samsung multi-window info at bottom &ndash;&gt;-->
+<!--                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name="net.bible.android.view.activity.page.MainBibleActivity"
                   android:label="@string/app_name"
